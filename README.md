@@ -16,7 +16,7 @@
 
 ## 🚀 Hızlı Kurulum
 
-### 1. Repozitörü Klonla
+### 1. Repoyu Klonla
 
 ```bash
 git clone https://github.com/rastmob/B2BHepsijetIntegration.git
