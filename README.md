@@ -8,6 +8,7 @@
 
 - ✅ **Katmanlı Mimari** (API, Application, Domain, Infrastructure, Persistence)
 - 🔐 **Token Bazlı Hepsijet API Entegrasyonu**
+- 🧾 Gönderi oluşturma (sendDeliveryAdvance/v2) servisi hazır
 - 🧪 Swagger ile test edilebilir uç noktalar
 - 🧱 Genişletilebilir yapı (CQRS, Logging, Caching vs. için hazır)
 - 🌍 Çoklu ortamlar için kolay yapılandırma
@@ -27,24 +28,19 @@ cd B2BHepsijetIntegration
 
 ```bash
 dotnet --version
-# Örnek: 7.0.100 veya üstü
+# En az: 7.0.100
 ```
 
-### 3. Gerekli Projeleri Çözüm Dosyasına Ekle
+### 3. Derleme ve Çalıştırma
 
 ```bash
 dotnet restore
 dotnet build
-```
-
-### 4. API'yi Başlat
-
-```bash
 cd B2BHepsijetIntegration.API
 dotnet run
 ```
 
-> Swagger UI: `https://localhost:5001/swagger`
+> Swagger UI: `http://localhost:5143/swagger`
 
 ---
 
@@ -61,17 +57,35 @@ B2BHepsijetIntegration/
 
 ---
 
-## 🔐 Hepsijet Token Alma Örneği
+## 🔐 API Özellikleri
 
-```csharp
-var request = new HttpRequestMessage(HttpMethod.Get, "https://integration-apitest.hepsijet.com/auth/getToken");
-var byteArray = Encoding.ASCII.GetBytes($"{username}:{password}");
-request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+### 1. Token Alma
 
-var response = await _httpClient.SendAsync(request);
-var json = await response.Content.ReadAsStringAsync();
-var token = JsonConvert.DeserializeObject<TokenResponse>(json)?.Data?.Token;
 ```
+GET /api/auth/get-token?username=xxx&password=yyy
+```
+
+Header Authorization gerekmez. Basic Auth yapılır.
+
+### 2. Gönderi Oluşturma (V2)
+
+```
+POST /api/delivery/send-advance
+```
+
+Header'da `X-Auth-Token` gönderilmelidir.  
+Body: `DeliveryAdvanceRequest` JSON (örnekler Swagger'da mevcuttur)
+
+---
+
+## 🧪 Test Edilecek Örnek Dummy Veriler
+
+- Firma: Rast Mobile
+- Kullanıcı: Mehmet Alp
+- Email: mobilerast@gmail.com
+- Şehir: İstanbul
+- İlçe: Merter
+- Adres: Alparslan İş Merkezi, Merter, İstanbul
 
 ---
 
