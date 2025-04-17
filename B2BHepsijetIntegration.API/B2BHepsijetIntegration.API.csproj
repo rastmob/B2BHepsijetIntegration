@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.14" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\B2BHepsijetIntegration.Application\B2BHepsijetIntegration.Application.csproj" />
+    <ProjectReference Include="..\B2BHepsijetIntegration.Infrastructure\B2BHepsijetIntegration.Infrastructure.csproj" />
+    <ProjectReference Include="..\B2BHepsijetIntegration.Persistence\B2BHepsijetIntegration.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

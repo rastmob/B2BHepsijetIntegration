@@ -1,0 +1,35 @@
+# Build outputs
+bin/
+obj/
+*.exe
+*.dll
+*.app
+*.log
+
+# User-specific files
+.vs/
+*.user
+*.suo
+
+# Rider files
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dotnet environment
+*.db
+*.pdb
+*.cache
+*.vscode/
+
+# Test results
+TestResults/
+
+# Env files
+.env
+.env.*
+
+# Secrets
+secrets.json
